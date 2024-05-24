@@ -1,24 +1,17 @@
 const reactDescriptions = ['Fundamental', 'Crucial', 'Core'];
 
-const myFullName = [
-  'Luis', 
-  'Mármol',
-  'Software Developer',
-  '23 Years Old'
-];
-
 function genRandomInt(max) {
   return Math.floor(Math.random() * (max + 1));
 }
 
-function MyName() {
+function MyName({nameProp}) {
   return (
-    <p>
-      Nombre: {myFullName[0]} <br />
-      Apellido: {myFullName[1]} <br />
-      Título: {myFullName[2]} <br />
-      Edad: {myFullName[3]}
-    </p>
+    <div>
+      <p>Nombre: {nameProp[0]}</p>
+      <p>Apellido: {nameProp[1]}</p>
+      <p>Título: {nameProp[2]}</p>
+      <p>Edad: {nameProp[3]}</p>
+    </div>
   );
 }
 
@@ -37,11 +30,18 @@ function Header() {
 }
 
 function App() {
+  const myFullName = [
+    'Luis', 
+    'Mármol',
+    'Software Developer',
+    '23 Years Old'
+  ];
+  
   return (
     <div>
       <Header />
       <main>
-        <MyName />
+        <MyName nameProp={myFullName}/>
       </main>
     </div>
   );
