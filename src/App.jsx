@@ -7,18 +7,19 @@ const myFullName = [
   '23 Years Old'
 ];
 
+
 function genRandomInt(max) {
   return Math.floor(Math.random() * (max + 1));
 }
 
-function MyName() {
+function PersonalData(props) {
   return (
-    <p>
-      Nombre: {myFullName[0]} <br />
-      Apellido: {myFullName[1]} <br />
-      Título: {myFullName[2]} <br />
-      Edad: {myFullName[3]}
-    </p>
+    <div>
+      <p>Nombre: {props.nombre}</p>
+      <p>Apellido: {props.apellido}</p>
+      <p>Título: {props.titulo}</p>
+      <p>Edad: {props.edad}</p>
+    </div>
   );
 }
 
@@ -41,7 +42,7 @@ function App() {
     <div>
       <Header />
       <main>
-        <MyName />
+        <PersonalData nombre={myFullName[0]} apellido={myFullName[1]} titulo={myFullName[2]} edad={myFullName[3]}/>
       </main>
     </div>
   );
