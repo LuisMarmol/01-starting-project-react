@@ -1,3 +1,6 @@
+import componentImg from './assets/components.png/';
+import { CORE_CONCEPTS } from './data';
+
 const reactDescriptions = ['Fundamental', 'Crucial', 'Core'];
 
 const myFullName = [
@@ -7,6 +10,15 @@ const myFullName = [
   '23 Years Old'
 ];
 
+function CoreConcepts(props) {
+  return (
+    <li>
+      <img src={props.image} alt={props.title} />
+      <h3>{props.title}</h3>
+      <p>{props.description}</p>
+    </li>
+  );
+}
 
 function genRandomInt(max) {
   return Math.floor(Math.random() * (max + 1));
@@ -42,7 +54,40 @@ function App() {
     <div>
       <Header />
       <main>
-        <PersonalData nombre={myFullName[0]} apellido={myFullName[1]} titulo={myFullName[2]} edad={myFullName[3]}/>
+        <h2>Time to get Started!</h2>
+        
+        <PersonalData 
+        nombre={myFullName[0]} 
+        apellido={myFullName[1]} 
+        titulo={myFullName[2]} 
+        edad={myFullName[3]}
+        />
+        
+        <section id="core-concepts">
+          <h2>Core Concepts</h2>
+          <ul>
+            <CoreConcepts 
+            image={componentImg}
+            title='Components'
+            description='The core UI building block - compose the user interface by combining multiple components'
+            />
+            <CoreConcepts 
+            image={CORE_CONCEPTS[1].image}
+            title={CORE_CONCEPTS[1].title}
+            description={CORE_CONCEPTS[1].description}
+            />
+            <CoreConcepts 
+            image={CORE_CONCEPTS[2].image}
+            title={CORE_CONCEPTS[2].title}
+            description={CORE_CONCEPTS[2].description}
+            />
+            <CoreConcepts 
+            image={CORE_CONCEPTS[3].image}
+            title={CORE_CONCEPTS[3].title}
+            description={CORE_CONCEPTS[3].description}
+            />
+          </ul>
+        </section>
       </main>
     </div>
   );
