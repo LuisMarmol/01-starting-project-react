@@ -16,6 +16,22 @@ function App() {
     
     //console.log(selectedButton);
   }
+
+  let tabContent = <p>Please, select a topic.</p>;
+
+  if(selectedTopic !== undefined) {
+    tabContent = (
+      <div id="tab-content">
+            <h3>{EXAMPLES[selectedTopic].title}</h3>
+            <p>{EXAMPLES[selectedTopic].description}</p>
+            <pre>
+              <code>
+                {EXAMPLES[selectedTopic].code}
+              </code>
+            </pre>
+          </div>
+    );
+  }
   
   return (
     <div>
@@ -63,17 +79,7 @@ function App() {
             <TabButton onClick={()=>{handleClick('state')}}>State</TabButton>
           </menu>
 
-          {selectedTopic === undefined ? (<h2>Please, select a topic.</h2>) : (
-            <div id="tab-content">
-            <h3>{EXAMPLES[selectedTopic].title}</h3>
-            <p>{EXAMPLES[selectedTopic].description}</p>
-            <pre>
-              <code>
-                {EXAMPLES[selectedTopic].code}
-              </code>
-            </pre>
-          </div>
-          )}
+          {tabContent}
           
         </section>
       </main>
