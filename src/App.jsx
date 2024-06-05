@@ -5,15 +5,14 @@ import CoreConcept from './components/CoreConcept/CoreConcept.jsx';
 import TabButton from './components/TabButton/TabButton.jsx';
 
 import { CORE_CONCEPTS } from './data';
-
-//let defaultContent = "Press a button";
+import { EXAMPLES } from './data';
 
 function App() {
-  const [content, setContent] = useState("Press a button");
+  const [selectedTopic, setSelectedTopic] = useState();
 
   function handleClick(selectedButton){
     
-    setContent(selectedButton);
+    setSelectedTopic(selectedButton);
     
     //console.log(selectedButton);
   }
@@ -58,17 +57,30 @@ function App() {
           <h2>Examples</h2>
 
           <menu>
-            <TabButton onClick={()=>{handleClick('Components')}}>Components</TabButton>
-            <TabButton onClick={()=>{handleClick('JSX')}}>JSX</TabButton>
-            <TabButton onClick={()=>{handleClick('Props')}}>Props</TabButton>
-            <TabButton onClick={()=>{handleClick('State')}}>State</TabButton>
+            <TabButton onClick={()=>{handleClick('components')}}>Components</TabButton>
+            <TabButton onClick={()=>{handleClick('jsx')}}>JSX</TabButton>
+            <TabButton onClick={()=>{handleClick('props')}}>Props</TabButton>
+            <TabButton onClick={()=>{handleClick('state')}}>State</TabButton>
           </menu>
-          {content}
-        </section>
 
+          {selectedTopic === undefined ? (<h2>Please, select a topic.</h2>) : (
+            <div id="tab-content">
+            <h3>{EXAMPLES[selectedTopic].title}</h3>
+            <p>{EXAMPLES[selectedTopic].description}</p>
+            <pre>
+              <code>
+                {EXAMPLES[selectedTopic].code}
+              </code>
+            </pre>
+          </div>
+          )}
+          
+        </section>
       </main>
 
     </div>
+
+
   );
 }
 
