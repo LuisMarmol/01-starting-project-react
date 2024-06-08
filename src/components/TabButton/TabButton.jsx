@@ -1,8 +1,12 @@
-import './TabButton.css';
-
-export default function TabButton({children, onClick}) {
+export default function TabButton({children, isSelected, onClick}) {
 
     return (
-        <button onClick={onClick}>{children}</button>
+        <li>
+            <button 
+            className={isSelected ? "active" : undefined}
+            onClick={onClick}>
+                {children}
+            </button>
+        </li>
     );       
 }
